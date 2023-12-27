@@ -1,0 +1,7 @@
+---
+
+lab_group:
+  connection_options:
+    netmiko:
+      extras:
+        timeout: 200

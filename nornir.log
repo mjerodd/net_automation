@@ -1,0 +1,509 @@
+2023-12-13 14:29:22,442 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 14:29:22,449 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_jinja2\plugins\tasks\template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: nx_template.j2
+
+2023-12-13 14:29:22,450 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 81, in nex_conf
+    template = task.run(task=template_file, template="nx_template.j2", path="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\yaml_files\\config.yaml")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2023-12-13 14:31:35,481 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 14:31:41,517 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 14:31:45,498 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\client.py", line 358, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\util.py", line 279, in retry_on_signal
+    return function()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\client.py", line 358, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\connections\netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 439, in __init__
+    self._open()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1068, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_nxos 10.32.40.167:22
+
+
+
+2023-12-13 14:31:45,499 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-13 14:31:51,523 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\client.py", line 358, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\util.py", line 279, in retry_on_signal
+    return function()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\client.py", line 358, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\connections\netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 439, in __init__
+    self._open()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1068, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_nxos 10.32.40.167:22
+
+
+
+2023-12-13 14:31:51,524 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-13 14:32:43,527 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 15:02:33,144 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 15:02:51,060 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 40, in netmiko_send_config
+    result = net_connect.send_config_from_file(config_file=config_file, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2057, in send_config_from_file
+    return self.send_config_set(commands, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2214, in send_config_set
+    output += self.exit_config_mode()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco_base_connection.py", line 55, in exit_config_mode
+    return super().exit_config_mode(exit_config=exit_config, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2024, in exit_config_mode
+    if self.check_config_mode():
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco\cisco_nxos_ssh.py", line 34, in check_config_mode
+    return super().check_config_mode(check_string=check_string, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco_base_connection.py", line 41, in check_config_mode
+    return super().check_config_mode(check_string=check_string, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1977, in check_config_mode
+    output = self.read_until_pattern(pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 672, in read_until_pattern
+    raise ReadTimeout(msg)
+netmiko.exceptions.ReadTimeout: 
+
+Pattern not detected: '[>#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+
+2023-12-13 15:02:51,061 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-13 15:18:45,949 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 15:35:45,714 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 15:35:56,487 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 40, in netmiko_send_config
+    result = net_connect.send_config_from_file(config_file=config_file, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2057, in send_config_from_file
+    return self.send_config_set(commands, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2214, in send_config_set
+    output += self.exit_config_mode()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco_base_connection.py", line 55, in exit_config_mode
+    return super().exit_config_mode(exit_config=exit_config, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2036, in exit_config_mode
+    raise ValueError("Failed to exit configuration mode")
+ValueError: Failed to exit configuration mode
+
+2023-12-13 15:35:56,489 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-13 16:21:44,581 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 16:21:44,604 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_jinja2\plugins\tasks\template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\jinja_templates\nx_template.j2", line 297, in template
+    description VPC Peer-Link to us{{site_id}}sw-core-{{switch_#}}
+jinja2.exceptions.TemplateSyntaxError: unexpected char '#' at 7610
+
+2023-12-13 16:21:44,605 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 81, in nex_conf
+    template = task.run(task=template_file, template="nx_template.j2", path="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\jinja_templates")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2023-12-13 16:23:14,854 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 16:23:14,858 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_jinja2\plugins\tasks\template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\jinja_templates\nx_template.j2", line 297, in template
+    description VPC Peer-Link to us{{site_id}}sw-core-{{switch_#}}
+jinja2.exceptions.TemplateSyntaxError: unexpected char '#' at 7610
+
+2023-12-13 16:23:14,858 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 81, in nex_conf
+    template = task.run(task=template_file, template="nx_template.j2", path="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\jinja_templates")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2023-12-13 16:23:50,426 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-13 16:23:50,433 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_jinja2\plugins\tasks\template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\jinja_templates\nx_template.j2", line 297, in top-level template code
+    description VPC Peer-Link to us{{site_id}}sw-core-{{switch_num}}
+jinja2.exceptions.UndefinedError: 'site_id' is undefined
+
+2023-12-13 16:23:50,434 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 81, in nex_conf
+    template = task.run(task=template_file, template="nx_template.j2", path="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\jinja_templates")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2023-12-14 10:57:29,831 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-14 10:57:29,850 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_jinja2\plugins\tasks\template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\jinja_templates\nx_template.j2", line 315, in top-level template code
+    ip address {{host.vpc_peer_src}}{{host.vpc_peer_mask}}
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'vpc_peer_src'
+
+2023-12-14 10:57:29,851 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 81, in nex_conf
+    template = task.run(task=template_file, template="nx_template.j2", path="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\jinja_templates")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2023-12-14 10:59:31,815 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-14 10:59:31,828 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_jinja2\plugins\tasks\template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\jinja_templates\nx_template.j2", line 315, in top-level template code
+    ip address {{host.vpc_peer_src}}{{host.vpc_peer_mask}}
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'vpc_peer_src'
+
+2023-12-14 10:59:31,830 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 81, in nex_conf
+    template = task.run(task=template_file, template="nx_template.j2", path="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\jinja_templates")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2023-12-14 11:11:29,551 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-14 11:28:32,501 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-14 11:40:48,784 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-14 11:44:00,206 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-14 16:37:57,853 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-14 16:45:19,166 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-15 11:24:04,747 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-15 11:24:30,376 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 40, in netmiko_send_config
+    result = net_connect.send_config_from_file(config_file=config_file, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2057, in send_config_from_file
+    return self.send_config_set(commands, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2214, in send_config_set
+    output += self.exit_config_mode()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco_base_connection.py", line 55, in exit_config_mode
+    return super().exit_config_mode(exit_config=exit_config, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2024, in exit_config_mode
+    if self.check_config_mode():
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco\cisco_nxos_ssh.py", line 34, in check_config_mode
+    return super().check_config_mode(check_string=check_string, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco_base_connection.py", line 41, in check_config_mode
+    return super().check_config_mode(check_string=check_string, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1977, in check_config_mode
+    output = self.read_until_pattern(pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 672, in read_until_pattern
+    raise ReadTimeout(msg)
+netmiko.exceptions.ReadTimeout: 
+
+Pattern not detected: '[>#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+
+2023-12-15 11:24:30,379 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-19 10:16:12,844 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-19 10:16:35,312 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 40, in netmiko_send_config
+    result = net_connect.send_config_from_file(config_file=config_file, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2057, in send_config_from_file
+    return self.send_config_set(commands, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2195, in send_config_set
+    output += self.read_channel_timing(read_timeout=read_timeout)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 741, in read_channel_timing
+    raise ReadTimeout(msg)
+netmiko.exceptions.ReadTimeout: 
+
+read_channel_timing's absolute timer expired.
+
+The network device was continually outputting data for longer than 15
+seconds.
+
+If this is expected i.e. the command you are executing is continually emitting
+data for a long period of time, then you can set 'read_timeout=x' seconds. If
+you want Netmiko to keep reading indefinitely (i.e. to only stop when there is
+no new data), then you can set 'read_timeout=0'.
+
+You can look at the Netmiko session_log or debug log for more information.
+
+
+
+2023-12-19 10:16:35,315 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-19 11:05:24,311 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-19 11:05:24,328 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\connections\netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'read_timeout'
+
+2023-12-19 11:05:24,328 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-19 11:11:41,186 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-19 11:11:56,028 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'netmiko_send_config' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_config.py", line 40, in netmiko_send_config
+    result = net_connect.send_config_from_file(config_file=config_file, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2057, in send_config_from_file
+    return self.send_config_set(commands, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2214, in send_config_set
+    output += self.exit_config_mode()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\cisco_base_connection.py", line 55, in exit_config_mode
+    return super().exit_config_mode(exit_config=exit_config, pattern=pattern)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 2036, in exit_config_mode
+    raise ValueError("Failed to exit configuration mode")
+ValueError: Failed to exit configuration mode
+
+2023-12-19 11:11:56,028 - nornir.core.task -    ERROR -      start() - Host 'LAB-NEXUS': task 'nex_conf' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 88, in nex_conf
+    task.run(task=netmiko_send_config, read_timeout=90, config_file=f"{task.host}_conf.txt")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+
+2023-12-19 11:20:06,861 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts

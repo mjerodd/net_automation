@@ -1,0 +1,13 @@
+---
+
+inventory:
+  plugin: SimpleInventory
+  options:
+    host_file: "C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\yaml_files\\hosts.yaml"
+    group_file: "C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\yaml_files\\groups.yaml"
+    defaults_file: "C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\yaml_files\\defaults.yaml"
+
+runner:
+  plugin: threaded
+  options:
+    num_workers: 10
