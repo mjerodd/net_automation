@@ -65,7 +65,7 @@ def get_ints(task):
         search_string = task.run(task=netmiko_send_command, command_string="show cdp neighbors {} detail".format(int2))
         match = re.search('Capabilities: Router|Switch', search_string.result)
         if match:
-            des_host = re.search(r'usDCD\w+-\w+-\d+', search_string.result)
+            des_host = re.search(r'usHBC\w+-\w+-\d+', search_string.result)
             des_host_mod = des_host.group()
             des_int = re.search(r'Port ID \(outgoing port\): (.*)\n', search_string.result)
             des_int_mod = des_int.group(1)
@@ -138,7 +138,7 @@ def thank_you(request):
 def int_descriptions(request):
     if request.method == 'POST':
         nr = InitNornir(
-            config_file="/home/marv/PycharmProjects/nornir_automation/net_automation/net_app/yaml_files/config.yaml")
+            config_file="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\yaml_files\\config.yaml")
         result = nr.run(task=get_ints)
         print_result(result)
         return redirect("thank-you")
@@ -150,5 +150,5 @@ def int_descriptions(request):
 def ios_up(request):
     if request.method == 'POST':
         nr = InitNornir(
-            config_file="/home/marv/PycharmProjects/nornir_automation/net_automation/net_app/yaml_files/upg_config.yaml")
+            config_file="C:\\Users\\marvin.thomas\\PycharmProjects\\nornir_labbing\\net_automation\\net_app\\yaml_files\\config.yaml")
 

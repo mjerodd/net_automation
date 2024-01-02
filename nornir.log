@@ -507,3 +507,82 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
 
 
 2023-12-19 11:20:06,861 -  nornir.core -     INFO -        run() - Running task 'nex_conf' with args {} on 1 hosts
+2023-12-27 14:25:48,816 -  nornir.core -     INFO -        run() - Running task 'get_ints' with args {} on 1 hosts
+2023-12-27 14:26:19,541 - nornir.core.task -    ERROR -      start() - Host 'usDCDsw-HBC-bld-rm-01': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\client.py", line 450, in connect
+    self._auth(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\client.py", line 781, in _auth
+    raise saved_exception
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\client.py", line 768, in _auth
+    self._transport.auth_password(username, password)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\transport.py", line 1564, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\paramiko\auth_handler.py", line 249, in wait_for_response
+    raise AuthenticationException("Authentication timeout.")
+paramiko.ssh_exception.AuthenticationException: Authentication timeout.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\tasks\netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir_netmiko\connections\netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 439, in __init__
+    self._open()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\netmiko\base_connection.py", line 1083, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_ios 10.32.40.139:22
+
+
+Authentication timeout.
+
+2023-12-27 14:26:19,542 - nornir.core.task -    ERROR -      start() - Host 'usDCDsw-HBC-bld-rm-01': task 'get_ints' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 55, in get_ints
+    sh_run_result = task.run(task=netmiko_send_command, command_string="show run | in interface")
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_command (failed)
+
+
+2023-12-27 14:27:22,869 -  nornir.core -     INFO -        run() - Running task 'get_ints' with args {} on 1 hosts
+2023-12-27 14:27:36,259 - nornir.core.task -    ERROR -      start() - Host 'usDCDsw-HBC-bld-rm-01': task 'get_ints' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 69, in get_ints
+    des_host_mod = des_host.group()
+AttributeError: 'NoneType' object has no attribute 'group'
+
+2023-12-27 14:34:48,092 -  nornir.core -     INFO -        run() - Running task 'get_ints' with args {} on 1 hosts
+2023-12-27 14:35:03,974 - nornir.core.task -    ERROR -      start() - Host 'usDCDsw-HBC-bld-rm-01': task 'get_ints' failed with traceback:
+Traceback (most recent call last):
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\venv\lib\site-packages\nornir\core\task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "C:\Users\marvin.thomas\PycharmProjects\nornir_labbing\net_automation\net_app\views.py", line 69, in get_ints
+    des_host_mod = des_host.group()
+AttributeError: 'NoneType' object has no attribute 'group'
+
